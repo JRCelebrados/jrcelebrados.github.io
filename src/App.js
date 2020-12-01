@@ -1,32 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import Batman423cover from './Batman423cover.png';
+import {Route, BrowserRouter as Router, Switch, Link, NavLink, Redirect} from 'react-router-dom';
+import Home from './components/Home';
+import AboutMe from './components/AboutMe';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={Batman423cover} className="App-logo" alt="logo" />
-        <p>
-          My name is Jesus Celebrados.
-        </p>
-        <a
-          // className="App-link"
-          // href="https://reactjs.org"
-          // target="_blank"
-          // rel="noopener noreferrer"
+class App extends Component {
 
-          className="App-link"
-          href="https:/github.com/JRCelebrados"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit my website.
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return(
+      <Router>
+
+        <div className="App">
+
+          <header>
+
+            <div class="header-container">
+              <div class="logo"></div>
+              <div class="title"></div>
+              <div class="filler-transparent-white"></div>
+            </div>
+
+            <div class="nav-container">
+
+              <div class="filler-blank"></div>
+
+              <nav>
+                <ul>
+                <li><Link to="/">Home</Link></li>
+                  <li><Link to="/about-me">About Me</Link></li>
+                </ul>
+              </nav>
+
+              <div class="filler-blank"></div>
+
+            </div>
+
+          </header>
+
+          <div class="body-container">
+            <div class="left-border"></div>
+            <div class="main-body">
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/about-me" component={AboutMe} />
+              </Switch>
+            </div>
+            <div class="right-border"></div>
+          </div>
+
+        </div>
+
+      </Router>
+    );
+  }
 }
 
 export default App;
